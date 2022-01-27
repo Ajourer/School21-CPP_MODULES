@@ -1,15 +1,17 @@
-NAME = claptrap
+NAME = fragtrap
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp\
-	   ClapTrap.cpp
+	   ClapTrap.cpp\
+	   ScavTrap.cpp\
+	   FragTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) Makefile ClapTrap.hpp
+$(NAME): $(OBJS) Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
