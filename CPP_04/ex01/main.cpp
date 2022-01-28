@@ -6,11 +6,11 @@
 
 int main()
 {
-	//Animal animal;
-	//const Animal* j = new Dog();
-	//std::cout << "===========================" << std::endl;
-	//const Animal* i = new Cat();
-	//std::cout << "===========================" << std::endl;
+	Animal animal;
+	const Animal* j = new Dog();
+	std::cout << "===========================" << std::endl;
+	const Animal* i = new Cat();
+	std::cout << "===========================" << std::endl;
 
 	Cat basic;
 	{
@@ -24,31 +24,26 @@ int main()
 	}
 	std::cout << "===========================" << std::endl;
 
-	//delete j;//should not create a leak
-	//delete i;
-	//std::cout << "===========================" << std::endl;
-	//std::cout << "===========================" << std::endl;
-	//std::cout << "===========================" << std::endl;
-	//std::cout << "==========================" << std::endl;
-
-	//Animal *arr[2];
-
-	//for(int i = 0; i < 2; i++)
-	//{
-		//if (i % 2 == 0)
-		//{
-			//arr[i] = new Dog();
-			//arr[i]->makeSound();
-		//}
-		//else
-		//{
-			//arr[i] = new Cat();
-			//arr[i]->makeSound();
-		//}
-	//}
-	//for(int i = 0; i < 2; i++)
-		//delete arr[i];
-	//std::cout << "===========================" << std::endl;
-	//while(1);
+	delete j;//should not create a leak
+	delete i;
+	std::cout << "===========================" << std::endl;
+	std::cout << "===========================" << std::endl;
+	std::cout << "===========================" << std::endl;
+	std::cout << "==========================" << std::endl;
+	Animal *animals[6];
+    for (int i = 0; i < 6; i++)
+    {
+		if (i % 2) {
+            animals[i] = new Cat;
+			animals[i]->makeSound();
+		}
+        else {
+            animals[i] = new Dog;
+			animals[i]->makeSound();
+		}
+    }
+    for (int i = 0; i < 6; i++)
+        delete animals[i];
+	std::cout << "===========================" << std::endl;
 	return 0;
 }

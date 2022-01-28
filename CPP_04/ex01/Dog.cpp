@@ -5,8 +5,8 @@ Dog::Dog(): Animal() {
 	std::cout << "Dog constructor called" << std::endl;
 	this->type = "Dog";
 	this->brain = new Brain();
-	this->brain->fillIdeas("Dog's idea");
-	this->brain->printIdeas(3);
+	this->brain->fillIdeas("\x1b[35mDog's idea\x1b[0m");
+	this->brain->printIdeas(1);
 }
 
 Dog::~Dog() {
@@ -16,7 +16,8 @@ Dog::~Dog() {
 
 Dog::Dog(const Dog& dog) {
 	std::cout << "Copy constructor Dog called" << std::endl;
-	*this = dog;
+	this->type = dog.type;
+	this->brain = new Brain(*dog.brain);
 }
 
 Dog &Dog::operator=(const Dog &dog) {
@@ -34,5 +35,5 @@ Dog &Dog::operator=(const Dog &dog) {
 }
 
 void Dog::makeSound() const {
-	std::cout << "Woof!" << std::endl;
+	std::cout << "\x1b[4;32mWoof!\x1b[0m" << std::endl;
 }

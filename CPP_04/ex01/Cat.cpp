@@ -5,8 +5,8 @@ Cat::Cat(): Animal() {
 	std::cout << "Cat constructor called" << std::endl;
 	this->type = "Cat";
 	this->brain = new Brain;
-	this->brain->fillIdeas("Cats's idea");
-	this->brain->printIdeas(5);
+	this->brain->fillIdeas("\x1b[35mCats's idea\x1b[0m");
+	this->brain->printIdeas(1);
 }
 
 Cat::~Cat() {
@@ -16,7 +16,8 @@ Cat::~Cat() {
 
 Cat::Cat(const Cat& cat) {
 	std::cout << "Copy constructor Cat called" << std::endl;
-	*this = cat;
+	this->type = cat.type;
+	this->brain = new Brain(*cat.brain);
 }
 
 Cat &Cat::operator=(const Cat &cat) {
@@ -34,5 +35,5 @@ Cat &Cat::operator=(const Cat &cat) {
 }
 
 void Cat::makeSound() const {
-	std::cout << "Meow!" << std::endl;
+	std::cout << "\x1b[4;32mMeow!\x1b[0m" << std::endl;
 }
