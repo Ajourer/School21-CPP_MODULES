@@ -25,11 +25,11 @@ int Span::shortestSpan() {
 	if (st_len <= 1)
 		throw CantSpan();
 	int shortest = INT_MAX;
-	for (std::set<int>::iterator i = begin(st); i != end(st); i++) {
-		std::set<int>::iterator nxt = i;
+	for (std::multiset<int>::iterator i = begin(st); i != end(st); i++) {
+		std::multiset<int>::iterator nxt = i;
 		++nxt;
-		if (abs(*nxt - *i) < shortest)
-			shortest = abs(*nxt - *i);
+		if (*nxt - *i < shortest && nxt != end(st))
+			shortest = *nxt - *i;
 	}
 	return shortest;
 }
@@ -38,5 +38,15 @@ int Span::longestSpan() {
 	if (st_len <= 1)
 		throw CantSpan();
 	else
-		return abs(*(--st.end()) - *st.begin());
+		return *(--st.end()) - *st.begin();
+}
+void Span::addManyNumbers(std::multiset<int>::iterator start, std::multiset<int>::iterator end)
+{
+	unsigned int dist = 0;
+	for (std::multiset<int>::iterator it = start; it != end; it++)
+		dist++;
+	if (st.size() + dist > st_len)
+		throw NotEnoughSpace();
+	for (std::multiset<int>::iterator it = start; it != end; it++)
+		addNumber(*it);
 }

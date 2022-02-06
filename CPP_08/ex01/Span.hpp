@@ -10,7 +10,7 @@
 class Span {
 	private:
 		unsigned int st_len;
-		std::set<int> st;
+		std::multiset<int> st;
 	public:
 		Span();
 		~Span();
@@ -21,6 +21,7 @@ class Span {
 		void addNumber(int num);
 		int shortestSpan();
 		int longestSpan();
+		void addManyNumbers(std::multiset<int>::iterator start, std::multiset<int>::iterator end);
 		class NotEnoughSpace : public std::exception {
 			virtual const char* what() const throw() {
 				return "Not enough space in the span to add the integer.";

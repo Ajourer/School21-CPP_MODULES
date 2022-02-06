@@ -10,9 +10,9 @@ int main() {
 	}
 
 	Span sp = Span(5);
-	sp.addNumber(-5);
-	sp.addNumber(13);
-	sp.addNumber(11);
+	sp.addNumber(2);
+	sp.addNumber(2);
+	sp.addNumber(21);
 	sp.addNumber(15);
 	sp.addNumber(-4);
 	std::cout << sp.shortestSpan() << std::endl;
@@ -25,5 +25,24 @@ int main() {
 		std::cout << e.what() << std::endl;
 	}
 
+	std::multiset<int> AAAAAAAAA;
+
+	for (int i = 0; i < 100; i++)
+		AAAAAAAAA.insert(i);
+
+	Span b(110);
+	Span b2(20);
+
+
+	b.addManyNumbers(AAAAAAAAA.begin(), AAAAAAAAA.end());
+	try {
+		b2.addManyNumbers(AAAAAAAAA.begin(), AAAAAAAAA.end());
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << b.shortestSpan() << std::endl;
+	std::cout << b.longestSpan() << std::endl;
 	return 0;
 }
